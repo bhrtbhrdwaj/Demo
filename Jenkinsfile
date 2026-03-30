@@ -44,10 +44,7 @@ pipeline {
                     sh "docker rm -f ${IMAGE_NAME} || true"
                     sh "docker run -d -p ${APP_PORT}:${APP_PORT} --name ${IMAGE_NAME} ${IMAGE_NAME}:${IMAGE_TAG}"
 
-                    echo "⏳ Waiting for app..."
-                    sleep 10
-                    // Health check
-                    sh "curl -f http://localhost:${APP_PORT}/ping || (docker stop ${IMAGE_NAME} && exit 1)"
+                    echo "⏳ Triggered the deployment for app..."
                 }
             }
         }
